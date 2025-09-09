@@ -4,84 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-pt="Rodrigo Braz - Desenvolvedor Full Stack" data-en="Rodrigo Braz - Full Stack Developer">Rodrigo Braz - Desenvolvedor Full Stack</title>
+    <meta name="description" content="Portfolio de Rodrigo Braz - Desenvolvedor Full Stack especializado em JavaScript, React, Node.js e desenvolvimento web moderno">
+    <meta name="keywords" content="desenvolvedor, full stack, javascript, react, nodejs, portfolio, web development">
+    <meta name="author" content="Rodrigo Braz">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='30' width='60' height='40' fill='%238B4513' rx='5'/%3E%3Crect x='25' y='35' width='50' height='30' fill='%23ffffff' rx='3'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-family='monospace' font-size='20' fill='%238B4513'%3E&lt;/&gt;%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Rodrigo Braz</span>
-            </div>
-            <div class="language-toggle">
-                <button id="lang-toggle" class="lang-btn">
-                    <span class="lang-flag">🇺🇸</span>
-                    <span class="lang-text">EN</span>
+    <!-- Navegação -->
+    <header>
+        <nav class="navbar" role="navigation" aria-label="Navegação principal">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="#home" class="logo-text" aria-label="Rodrigo Braz - Página inicial">Rodrigo Braz</a>
+                </div>
+                <div class="language-toggle">
+                    <button id="lang-toggle" class="lang-btn" aria-label="Alternar idioma" aria-expanded="false">
+                        <span class="lang-flag" aria-hidden="true">🇺🇸</span>
+                        <span class="lang-text">EN</span>
+                    </button>
+                </div>
+                <div class="nav-menu" id="nav-menu" role="menubar">
+                    <a href="#home" class="nav-link" role="menuitem" data-pt="Início" data-en="Home">Início</a>
+                    <a href="#about" class="nav-link" role="menuitem" data-pt="Sobre" data-en="About">Sobre</a>
+                    <a href="#experience" class="nav-link" role="menuitem" data-pt="Experiência" data-en="Experience">Experiência</a>
+                    <a href="#projects" class="nav-link" role="menuitem" data-pt="Projetos" data-en="Projects">Projetos</a>
+                    <a href="#skills" class="nav-link" role="menuitem" data-pt="Habilidades" data-en="Skills">Habilidades</a>
+                    <a href="#contact" class="nav-link" role="menuitem" data-pt="Contato" data-en="Contact">Contato</a>
+                </div>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
                 </button>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link" data-pt="Início" data-en="Home">Início</a>
-                <a href="#about" class="nav-link" data-pt="Sobre" data-en="About">Sobre</a>
-                <a href="#experience" class="nav-link" data-pt="Experiência" data-en="Experience">Experiência</a>
-                <a href="#projects" class="nav-link" data-pt="Projetos" data-en="Projects">Projetos</a>
-                <a href="#skills" class="nav-link" data-pt="Habilidades" data-en="Skills">Habilidades</a>
-                <a href="#contact" class="nav-link" data-pt="Contato" data-en="Contact">Contato</a>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-content-wrapper">
-                        <div class="hero-title-section">
-                            <h1 class="hero-title">
-                                <span class="title-line" data-pt="Desenvolvedor" data-en="Full Stack">Desenvolvedor</span>
-                                <span class="title-line accent" data-pt="Full Stack" data-en="Developer">Full Stack</span>
-                                <!-- <span class="title-line" data-pt="& Analista" data-en="& Analyst">& Analista</span> -->
-                            </h1>
+    <!-- Seção Hero -->
+    <main>
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-content-wrapper">
+                            <div class="hero-title-section">
+                                <h1 id="hero-title" class="hero-title">
+                                    <span class="title-line" data-pt="Desenvolvedor" data-en="Full Stack">Desenvolvedor</span>
+                                    <span class="title-line accent" data-pt="Full Stack" data-en="Developer">Full Stack</span>
+                                </h1>
+                            </div>
+                            <div class="profile-image">
+                                <img src="img/profile.jpg" alt="Foto de perfil do Rodrigo Braz, desenvolvedor full stack" width="320" height="320">
+                            </div>
                         </div>
-                        <div class="profile-image">
-                            <img src="profile.jpg" alt="Rodrigo Braz">
+                        <p class="hero-description" data-pt="Estudante de Sistemas de Informação apaixonado por tecnologia, com experiência em desenvolvimento full stack e análise de produtos. Atualmente trabalhando na Aptiv como Desenvolvedor de Software." data-en="Information Systems student passionate about technology, with experience in full stack development and product analysis. Currently working at Aptiv as a Software Developer.">
+                            Estudante de Sistemas de Informação apaixonado por tecnologia, com experiência em desenvolvimento full stack e análise de produtos. Atualmente trabalhando na Aptiv como Desenvolvedor de Software.
+                        </p>
+                        <div class="hero-buttons" role="group" aria-label="Ações principais">
+                            <button class="btn btn-primary" data-pt="Ver Portfolio" data-en="View Portfolio" aria-describedby="hero-description">Ver Portfolio</button>
+                            <button class="btn btn-outline" data-pt="Contato" data-en="Contact" aria-describedby="hero-description">Contato</button>
+                            <button class="btn btn-secondary" id="download-cv" data-pt="Baixar Currículo" data-en="Download Resume" aria-describedby="hero-description">Baixar Currículo</button>
                         </div>
                     </div>
-                    <p class="hero-description" data-pt="Estudante de Sistemas de Informação apaixonado por tecnologia, com experiência em desenvolvimento full stack e análise de produtos. Atualmente trabalhando na Aptiv como Desenvolvedor de Software." data-en="Information Systems student passionate about technology, with experience in full stack development and product analysis. Currently working at Aptiv as a Software Developer.">
-                        Estudante de Sistemas de Informação apaixonado por tecnologia, com experiência em desenvolvimento full stack e análise de produtos. Atualmente trabalhando na Aptiv como Desenvolvedor de Software.
-                    </p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary" data-pt="Ver Portfolio" data-en="View Portfolio">Ver Portfolio</button>
-                        <button class="btn btn-outline" data-pt="Contato" data-en="Contact">Contato</button>
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="geometric-shape shape-1"></div>
+                        <div class="geometric-shape shape-2"></div>
+                        <div class="geometric-shape shape-3"></div>
+                        <div class="floating-element element-1"></div>
+                        <div class="floating-element element-2"></div>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="geometric-shape shape-1"></div>
-                    <div class="geometric-shape shape-2"></div>
-                    <div class="geometric-shape shape-3"></div>
-                    <div class="floating-element element-1"></div>
-                    <div class="floating-element element-2"></div>
-                </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span class="scroll-text" data-pt="Role para explorar" data-en="Scroll to explore">Role para explorar</span>
-        </div>
-    </section>
+            <div class="scroll-indicator" aria-label="Indicador de rolagem">
+                <div class="scroll-line" aria-hidden="true"></div>
+                <span class="scroll-text" data-pt="Role para explorar" data-en="Scroll to explore">Role para explorar</span>
+            </div>
+        </section>
+    </main>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Seção Sobre -->
+    <section id="about" class="about" aria-labelledby="about-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
-                <div class="section-line"></div>
-            </div>
+            <header class="section-header">
+                <h2 id="about-title" class="section-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
+                <div class="section-line" aria-hidden="true"></div>
+            </header>
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-intro" data-pt="Estudante de Sistemas de Informação na Universidade Federal de Itajubá (UNIFEI), com previsão de formatura em dezembro de 2026." data-en="Information Systems student at the Federal University of Itajubá (UNIFEI), expected to graduate in December 2026.">
@@ -126,7 +137,7 @@
         </div>
     </section>
 
-    <!-- Beyond Resume Section -->
+    <!-- Seção Além do Currículo -->
     <section id="beyond-resume" class="beyond-resume">
         <div class="container">
             <div class="section-header">
@@ -147,7 +158,7 @@
                     <div class="expandable-content" id="literatura-content">
                         <div class="literatura-image">
                             <a href="https://www.instagram.com/breves.resenhas/" target="_blank">
-                                <img src="instagram-literatura.jpg" alt="Instagram Literatura" class="instagram-photo">
+                                <img src="img/instagram-literatura.jpg" alt="Instagram Literatura" class="instagram-photo">
                             </a>
                         </div>
                     </div>
@@ -166,19 +177,19 @@
                     <div class="expandable-content" id="fotografia-content">
                         <div class="photography-gallery">
                             <div class="photo-container">
-                                <img src="foto1.jpg" alt="Fotografia 1" class="gallery-photo">
+                                <img src="img/foto1.jpg" alt="Fotografia 1" class="gallery-photo">
                                 <div class="photo-caption" data-pt="Tirada com Samsung Galaxy S20" data-en="Taken with Samsung Galaxy S20">Tirada com Samsung Galaxy S20</div>
                             </div>
                             <div class="photo-container">
-                                <img src="foto2.jpg" alt="Fotografia 2" class="gallery-photo">
+                                <img src="img/foto2.jpg" alt="Fotografia 2" class="gallery-photo">
                                 <div class="photo-caption" data-pt="Tirada com Samsung Galaxy S20" data-en="Taken with Samsung Galaxy S20">Tirada com Samsung Galaxy S20</div>
                             </div>
                             <div class="photo-container">
-                                <img src="foto3.jpg" alt="Fotografia 3" class="gallery-photo">
+                                <img src="img/foto3.jpg" alt="Fotografia 3" class="gallery-photo">
                                 <div class="photo-caption" data-pt="Tirada com Samsung Galaxy S20" data-en="Taken with Samsung Galaxy S20">Tirada com Samsung Galaxy S20</div>
                             </div>
                             <div class="photo-container">
-                                <img src="foto4.jpg" alt="Fotografia 4" class="gallery-photo">
+                                <img src="img/foto4.jpg" alt="Fotografia 4" class="gallery-photo">
                                 <div class="photo-caption" data-pt="Tirada com Samsung Galaxy S20" data-en="Taken with Samsung Galaxy S20">Tirada com Samsung Galaxy S20</div>
                             </div>
                         </div>
@@ -188,99 +199,128 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <!-- Seção Experiência -->
+    <section id="experience" class="experience" aria-labelledby="experience-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-pt="Experiência" data-en="Experience">Experiência</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-date" data-pt="Jun/2025 - Atualmente" data-en="Jun/2025 - Present">Jun/2025 - Atualmente</div>
+            <header class="section-header">
+                <h2 id="experience-title" class="section-title" data-pt="Experiência" data-en="Experience">Experiência</h2>
+                <div class="section-line" aria-hidden="true"></div>
+            </header>
+            <div class="experience-timeline" role="list" aria-label="Histórico profissional">
+                <article class="experience-item" role="listitem">
+                    <time class="experience-date" datetime="2025-06" data-pt="Jun/2025 - Atualmente" data-en="Jun/2025 - Present">Jun/2025 - Atualmente</time>
                     <h3 data-pt="Desenvolvedor de Software (Estágio)" data-en="Software Developer (Internship)">Desenvolvedor de Software (Estágio)</h3>
                     <h4>Aptiv</h4>
                     <p data-pt="Desenvolvimento full stack e otimização de soluções internas para ERP, utilizando JavaScript (frontend), PHP (backend) e T-SQL com SQL Server (banco de dados)." data-en="Full stack development and optimization of internal ERP solutions, using JavaScript (frontend), PHP (backend) and T-SQL with SQL Server (database).">Desenvolvimento full stack e otimização de soluções internas para ERP, utilizando JavaScript (frontend), PHP (backend) e T-SQL com SQL Server (banco de dados).</p>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-date" data-pt="Jul/2021 - Mai/2022" data-en="Jul/2021 - May/2022">Jul/2021 - Mai/2022</div>
+                </article>
+                <article class="experience-item" role="listitem">
+                    <time class="experience-date" datetime="2021-07/2022-05" data-pt="Jul/2021 - Mai/2022" data-en="Jul/2021 - May/2022">Jul/2021 - Mai/2022</time>
                     <h3 data-pt="Analista de Produtos" data-en="Product Analyst">Analista de Produtos</h3>
                     <h4>MOVA - Credit as a Service</h4>
-                    <p data-pt="Criação de UML's, desenvolvimento de produtos, análise de pain points, testes de API's via Postman, gestão de cards no Jira e documentação no Confluence." data-en="UML creation, product development, pain point analysis, API testing via Postman, Jira card management and Confluence documentation.">Criação de UML's, desenvolvimento de produtos, análise de pain points, testes de API's via Postman, gestão de cards no Jira e documentação no Confluence.</p>
-                </div>
-                <!-- <div class="experience-item">
-                    <div class="experience-date">2014 - 2017</div>
-                    <h3 data-pt="Auxiliar Multifuncional" data-en="Multifunctional Assistant">Auxiliar Multifuncional</h3>
+                    <p data-pt="Atuação em diversas competências, tais como:" data-en="Performance in various competencies, such as:">Atuação em diversas competências, tais como:</p>
+                    <ul>
+                        <li data-pt="Criação de UML's para fim de melhor compreensão do fluxo de determinado produto pelo time desenvolvedor;" data-en="Creation of UMLs for better understanding of the flow of a given product by the development team;">Criação de UML's para fim de melhor compreensão do fluxo de determinado produto pelo time desenvolvedor;</li>
+                        <li data-pt="Desenvolvimento de novos produtos e funcionalidades;" data-en="Development of new products and functionalities;">Desenvolvimento de novos produtos e funcionalidades;</li>
+                        <li data-pt="Análise de pain points;" data-en="Analysis of pain points;">Análise de pain points;</li>
+                        <li data-pt="Testes de API's via Postman;" data-en="API testing via Postman;">Testes de API's via Postman;</li>
+                        <li data-pt="Criação e monitoramento de cards na plataforma Jira;" data-en="Creation and monitoring of cards on the Jira platform;">Criação e monitoramento de cards na plataforma Jira;</li>
+                        <li data-pt="Escrita de documentação na plataforma Confluence, dentre outras atividades." data-en="Writing documentation on the Confluence platform, among other activities.">Escrita de documentação na plataforma Confluence, dentre outras atividades.</li>
+                    </ul>
+                </article>
+                <article class="experience-item" role="listitem">
+                    <time class="experience-date" datetime="2016-01/2017-01" data-pt="Jan/2016 - Jan/2017" data-en="Jan/2016 - Jan/2017">Jan/2016 - Jan/2017</time>
+                    <h3 data-pt="Assistente de TI" data-en="IT Assistant">Assistente de TI</h3>
                     <h4>Proeletronic</h4>
-                    <p data-pt="Atuação em produção, logística e TI - montagem de antenas HDTV, controle de estoque, suporte técnico e manutenção de infraestrutura." data-en="Working in production, logistics and IT - HDTV antenna assembly, inventory control, technical support and infrastructure maintenance.">Atuação em produção, logística e TI - montagem de antenas HDTV, controle de estoque, suporte técnico e manutenção de infraestrutura.</p>
-                </div> -->
+                    <p data-pt="Responsável pelo suporte ao usuário internamente, tanto na manutenção das máquinas quanto no controle de ativos e na infraestrutura de TI na planta, bem como periódicos ajustes na plataforma Protheus da TOTVS." data-en="Responsible for internal user support, both in machine maintenance and asset control, and IT infrastructure at the plant, as well as periodic adjustments to the Protheus platform from TOTVS.">Responsável pelo suporte ao usuário internamente, tanto na manutenção das máquinas quanto no controle de ativos e na infraestrutura de TI na planta, bem como periódicos ajustes na plataforma Protheus da TOTVS.</p>
+                </article>
+                
+                <article class="experience-item" role="listitem">
+                    <time class="experience-date" datetime="2015-01/2016-01" data-pt="Jan/2015 - Jan/2016" data-en="Jan/2015 - Jan/2016">Jan/2015 - Jan/2016</time>
+                    <h3 data-pt="Auxiliar de Logística" data-en="Logistics Assistant">Auxiliar de Logística</h3>
+                    <h4>Proeletronic</h4>
+                    <p data-pt="Responsável pela separação e conferência de pedidos para clientes, controle de estoque na expedição e no recebimento de materiais junto com a conferência de notas fiscais." data-en="Responsible for separating and checking customer orders, stock control in shipping and receiving materials along with checking invoices.">Responsável pela separação e conferência de pedidos para clientes, controle de estoque na expedição e no recebimento de materiais junto com a conferência de notas fiscais.</p>
+                </article>
+                
+                <article class="experience-item" role="listitem">
+                    <time class="experience-date" datetime="2014-01/2015-01" data-pt="Jan/2014 - Jan/2015" data-en="Jan/2014 - Jan/2015">Jan/2014 - Jan/2015</time>
+                    <h3 data-pt="Auxiliar de Produção" data-en="Production Assistant">Auxiliar de Produção</h3>
+                    <h4>Proeletronic</h4>
+                    <p data-pt="Responsável pela montagem e embalagem das antenas HDTV." data-en="Responsible for assembling and packaging HDTV antennas.">Responsável pela montagem e embalagem das antenas HDTV.</p>
+                </article>
+                
+                <article class="experience-item" role="listitem">
+                    <time class="experience-date" datetime="2008-05/2013-02" data-pt="Mai/2008 - Fev/2013" data-en="May/2008 - Feb/2013">Mai/2008 - Fev/2013</time>
+                    <h3 data-pt="Operador de Produção" data-en="Production Operator">Operador de Produção</h3>
+                    <h4>Delphi Automotive Systems</h4>
+                    <p data-pt="Responsável pela produção de chicotes elétricos na linha da Mercedes-Benz e no cabo de bateria." data-en="Responsible for the production of electrical harnesses on the Mercedes-Benz line and battery cables.">Responsável pela produção de chicotes elétricos na linha da Mercedes-Benz e no cabo de bateria.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <!-- Seção Projetos -->
+    <section id="projects" class="projects" aria-labelledby="projects-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-pt="Projetos" data-en="Projects">Projetos</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
+            <header class="section-header">
+                <h2 id="projects-title" class="section-title" data-pt="Projetos" data-en="Projects">Projetos</h2>
+                <div class="section-line" aria-hidden="true"></div>
+            </header>
+            <div class="projects-grid" role="list" aria-label="Portfolio de projetos">
+                <article class="project-card" role="listitem">
                     <div class="project-image">
                         <div class="project-overlay">
-                            <a href="https://orodrigobraz.github.io/quiztop/" target="_blank" class="project-link">
+                            <a href="https://orodrigobraz.github.io/quiztop/" target="_blank" class="project-link" aria-label="Ver projeto QuizTop (abre em nova aba)">
                                 <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
-                                <span class="external-icon">↗️</span>
+                                <span class="external-icon" aria-hidden="true">↗️</span>
                             </a>
                         </div>
                     </div>
                     <div class="project-content">
                         <h3 data-pt="QuizTop" data-en="QuizTop">QuizTop</h3>
                         <p data-pt="Aplicativo web de quiz interativo com sistema de pontuação e ranking. Utiliza Firebase para autenticação e armazenamento de dados em tempo real." data-en="Interactive quiz web application with scoring system and ranking. Uses Firebase for authentication and real-time data storage.">Aplicativo web de quiz interativo com sistema de pontuação e ranking. Utiliza Firebase para autenticação e armazenamento de dados em tempo real.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Firebase</span>
+                        <div class="project-tech" role="list" aria-label="Tecnologias utilizadas">
+                            <span class="tech-tag" role="listitem">HTML5</span>
+                            <span class="tech-tag" role="listitem">CSS3</span>
+                            <span class="tech-tag" role="listitem">JavaScript</span>
+                            <span class="tech-tag" role="listitem">Firebase</span>
                         </div>
                     </div>
-                </div>
+                </article>
                 
-                <div class="project-card">
+                <article class="project-card" role="listitem">
                     <div class="project-image">
                         <div class="project-overlay">
-                            <a href="https://orodrigobraz.github.io/viaje.ro/" target="_blank" class="project-link">
+                            <a href="https://orodrigobraz.github.io/viaje.ro/" target="_blank" class="project-link" aria-label="Ver projeto Viaje.ro (abre em nova aba)">
                                 <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
-                                <span class="external-icon">↗️</span>
+                                <span class="external-icon" aria-hidden="true">↗️</span>
                             </a>
                         </div>
                     </div>
                     <div class="project-content">
                         <h3 data-pt="Viaje.ro" data-en="Viaje.ro">Viaje.ro</h3>
                         <p data-pt="Plataforma de planejamento de viagens com mapas interativos e localização geográfica. Sistema completo de gestão de destinos e rotas." data-en="Travel planning platform with interactive maps and geographic location. Complete destination and route management system.">Plataforma de planejamento de viagens com mapas interativos e localização geográfica. Sistema completo de gestão de destinos e rotas.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Tailwind CSS</span>
-                            <span class="tech-tag">Supabase</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">PostGIS</span>
-                            <span class="tech-tag">Leaflet</span>
+                        <div class="project-tech" role="list" aria-label="Tecnologias utilizadas">
+                            <span class="tech-tag" role="listitem">React</span>
+                            <span class="tech-tag" role="listitem">TypeScript</span>
+                            <span class="tech-tag" role="listitem">Tailwind CSS</span>
+                            <span class="tech-tag" role="listitem">Supabase</span>
+                            <span class="tech-tag" role="listitem">PostgreSQL</span>
+                            <span class="tech-tag" role="listitem">PostGIS</span>
+                            <span class="tech-tag" role="listitem">Leaflet</span>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- Seção Habilidades -->
+    <section id="skills" class="skills" aria-labelledby="skills-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-pt="Habilidades" data-en="Skills">Habilidades</h2>
-                <div class="section-line"></div>
-            </div>
+            <header class="section-header">
+                <h2 id="skills-title" class="section-title" data-pt="Habilidades" data-en="Skills">Habilidades</h2>
+                <div class="section-line" aria-hidden="true"></div>
+            </header>
             <div class="skills-content">
                 <div class="skills-category">
                     <h3 data-pt="Desenvolvimento" data-en="Development">Desenvolvimento</h3>
@@ -364,52 +404,56 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Seção Contato -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-pt="Entre em Contato" data-en="Get in Touch">Entre em Contato</h2>
-                <div class="section-line"></div>
-            </div>
+            <header class="section-header">
+                <h2 id="contact-title" class="section-title" data-pt="Entre em Contato" data-en="Get in Touch">Entre em Contato</h2>
+                <div class="section-line" aria-hidden="true"></div>
+            </header>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3 data-pt="Vamos trabalhar juntos?" data-en="Let's work together?">Vamos trabalhar juntos?</h3>
                     <p data-pt="Estou sempre aberto a novos projetos e oportunidades. Entre em contato para discutirmos como posso contribuir com soluções inovadoras para sua empresa." data-en="I'm always open to new projects and opportunities. Get in touch to discuss how I can contribute with innovative solutions for your company.">Estou sempre aberto a novos projetos e oportunidades. Entre em contato para discutirmos como posso contribuir com soluções inovadoras para sua empresa.</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <span class="contact-icon">📧</span>
-                            <span>rodrigo.braz@outlook.com.br</span>
+                    <div class="contact-methods" role="list" aria-label="Informações de contato">
+                        <div class="contact-method" role="listitem">
+                            <span class="contact-icon" aria-hidden="true">📧</span>
+                            <a href="mailto:rodrigo.braz@outlook.com.br" aria-label="Enviar email para rodrigo.braz@outlook.com.br">rodrigo.braz@outlook.com.br</a>
                         </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">📱</span>
-                            <span>+55 (35) 98477-1404</span>
+                        <div class="contact-method" role="listitem">
+                            <span class="contact-icon" aria-hidden="true">📱</span>
+                            <a href="tel:+5535984771404" aria-label="Ligar para +55 (35) 98477-1404">+55 (35) 98477-1404</a>
                         </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">📍</span>
+                        <div class="contact-method" role="listitem">
+                            <span class="contact-icon" aria-hidden="true">📍</span>
                             <span data-pt="Paraisópolis, Minas Gerais" data-en="Paraisópolis, Minas Gerais, Brazil">Paraisópolis, Minas Gerais</span>
                         </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">💼</span>
-                            <a href="https://www.linkedin.com/in/orodrigobraz/" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn</a>
+                        <div class="contact-method" role="listitem">
+                            <span class="contact-icon" aria-hidden="true">💼</span>
+                            <a href="https://www.linkedin.com/in/orodrigobraz/" target="_blank" aria-label="Visitar perfil no LinkedIn (abre em nova aba)" style="color: inherit; text-decoration: none;">LinkedIn</a>
                         </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">👨‍💻</span>
-                            <a href="https://github.com/orodrigobraz" target="_blank" style="color: inherit; text-decoration: none;">GitHub</a>
+                        <div class="contact-method" role="listitem">
+                            <span class="contact-icon" aria-hidden="true">👨‍💻</span>
+                            <a href="https://github.com/orodrigobraz" target="_blank" aria-label="Visitar perfil no GitHub (abre em nova aba)" style="color: inherit; text-decoration: none;">GitHub</a>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form">
+                <form class="contact-form" aria-labelledby="contact-form-title">
+                    <h3 id="contact-form-title" class="form-title" data-pt="Envie uma mensagem" data-en="Send a message">Envie uma mensagem</h3>
                     <div class="form-group">
-                        <input type="text" id="name" required>
                         <label for="name" data-pt="Nome" data-en="Name">Nome</label>
+                        <input type="text" id="name" name="name" required aria-describedby="name-help">
+                        <div id="name-help" class="sr-only" data-pt="Digite seu nome completo" data-en="Enter your full name">Digite seu nome completo</div>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" required>
                         <label for="email" data-pt="Email" data-en="Email">Email</label>
+                        <input type="email" id="email" name="email" required aria-describedby="email-help">
+                        <div id="email-help" class="sr-only" data-pt="Digite um email válido" data-en="Enter a valid email">Digite um email válido</div>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" required></textarea>
                         <label for="message" data-pt="Mensagem" data-en="Message">Mensagem</label>
+                        <textarea id="message" name="message" rows="5" required aria-describedby="message-help"></textarea>
+                        <div id="message-help" class="sr-only" data-pt="Digite sua mensagem" data-en="Enter your message">Digite sua mensagem</div>
                     </div>
                     <button type="submit" class="btn btn-primary" data-pt="Enviar Mensagem" data-en="Send Message">Enviar Mensagem</button>
                 </form>
@@ -417,19 +461,25 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Rodapé -->
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <p data-pt="&copy; 2025 Rodrigo Braz. Todos os direitos reservados." data-en="&copy; 2025 Rodrigo Braz. All rights reserved.">&copy; 2025 Rodrigo Braz. Todos os direitos reservados.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/orodrigobraz/" target="_blank" class="social-link">LinkedIn</a>
-                    <a href="https://github.com/orodrigobraz" target="_blank" class="social-link">GitHub</a>
-                    <a href="mailto:rodrigo.braz@outlook.com.br" class="social-link" data-pt="Email" data-en="Email">Email</a>
-                </div>
+                <nav class="social-links" aria-label="Links sociais">
+                    <a href="https://www.linkedin.com/in/orodrigobraz/" target="_blank" class="social-link" aria-label="Visitar perfil no LinkedIn (abre em nova aba)">LinkedIn</a>
+                    <a href="https://github.com/orodrigobraz" target="_blank" class="social-link" aria-label="Visitar perfil no GitHub (abre em nova aba)">GitHub</a>
+                    <a href="mailto:rodrigo.braz@outlook.com.br" class="social-link" aria-label="Enviar email para rodrigo.braz@outlook.com.br" data-pt="Email" data-en="Email">Email</a>
+                </nav>
             </div>
         </div>
     </footer>
+
+    <!-- Indicador de Progresso de Rolagem -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
 
     <script src="script.js"></script>
 </body>

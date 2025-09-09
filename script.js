@@ -1,10 +1,10 @@
-// Language switching functionality
-let currentLanguage = 'pt'; // Default language
+// Funcionalidade de troca de idioma
+let currentLanguage = 'pt'; // Idioma padrão
 
 function switchLanguage() {
     currentLanguage = currentLanguage === 'pt' ? 'en' : 'pt';
     
-    // Update all elements with language attributes
+    // Atualiza todos os elementos com atributos de idioma
     const elementsWithLang = document.querySelectorAll('[data-pt][data-en]');
     elementsWithLang.forEach(element => {
         const newText = element.getAttribute(`data-${currentLanguage}`);
@@ -17,7 +17,16 @@ function switchLanguage() {
         }
     });
     
-    // Update language button
+    // Atualiza o botão de download do CV especificamente
+    const downloadCvBtn = document.getElementById('download-cv');
+    if (downloadCvBtn) {
+        const newText = downloadCvBtn.getAttribute(`data-${currentLanguage}`);
+        if (newText) {
+            downloadCvBtn.innerHTML = newText;
+        }
+    }
+    
+    // Atualiza o botão de idioma
     const langBtn = document.getElementById('lang-toggle');
     const langFlag = langBtn.querySelector('.lang-flag');
     const langText = langBtn.querySelector('.lang-text');
@@ -32,24 +41,24 @@ function switchLanguage() {
         document.documentElement.lang = 'pt-BR';
     }
     
-    // Save language preference
+    // Salva a preferência de idioma
     localStorage.setItem('preferredLanguage', currentLanguage);
 }
 
-// Smooth scrolling for navigation links
+// Rolagem suave para links de navegação
 document.addEventListener('DOMContentLoaded', function() {
-    // Load saved language preference
+    // Carrega a preferência de idioma salva
     const savedLanguage = localStorage.getItem('preferredLanguage');
     if (savedLanguage && savedLanguage !== currentLanguage) {
         switchLanguage();
     }
     
-    // Language toggle functionality
+    // Funcionalidade de troca de idioma
     const langToggle = document.getElementById('lang-toggle');
     if (langToggle) {
         langToggle.addEventListener('click', switchLanguage);
     }
-    // Mobile navigation toggle
+    // Alternância do menu de navegação mobile
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     
@@ -57,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             
-            // Animate hamburger menu
+            // Animação do menu hambúrguer
             const bars = navToggle.querySelectorAll('.bar');
             bars.forEach((bar, index) => {
                 bar.style.transform = navMenu.classList.contains('active') 
@@ -70,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close mobile menu when clicking on links
+    // Fecha o menu mobile ao clicar nos links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (navMenu) {
                 navMenu.classList.remove('active');
-                // Reset hamburger animation
+                // Reseta a animação do hambúrguer
                 const bars = navToggle.querySelectorAll('.bar');
                 bars.forEach((bar, index) => {
                     bar.style.transform = 'rotate(0deg)';
@@ -86,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Smooth scrolling for navigation links
+    // Rolagem suave para links de navegação
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -94,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
+                const offsetTop = targetSection.offsetTop - 70; // Compensa a navbar fixa
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -103,13 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Hero buttons smooth scroll
+    // Rolagem suave para botões da seção hero
     const heroButtons = document.querySelectorAll('.hero-buttons .btn');
     heroButtons.forEach((btn, index) => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             if (index === 0) {
-                // Projects button
+                // Botão de projetos
                 const projectsSection = document.getElementById('projects');
                 if (projectsSection) {
                     const offsetTop = projectsSection.offsetTop - 70;
@@ -118,8 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         behavior: 'smooth'
                     });
                 }
-            } else {
-                // Contact button
+            } else if (index === 1) {
+                // Botão de contato
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
                     const offsetTop = contactSection.offsetTop - 70;
@@ -128,19 +137,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         behavior: 'smooth'
                     });
                 }
+            } else if (index === 2) {
+                // Botão de download do CV
+                downloadCV();
             }
         });
     });
     
-    // Portfolio filter functionality
+    // Funcionalidade de filtro do portfólio
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active class from all buttons
+            // Remove a classe ativa de todos os botões
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
+            // Adiciona a classe ativa ao botão clicado
             this.classList.add('active');
             
             const filterValue = this.getAttribute('data-filter');
@@ -161,18 +173,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Contact form handling
+    // Manipulação do formulário de contato
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
+            // Obtém os valores do formulário
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             
-            // Simple validation
+            // Validação simples
             if (!name || !email || !message) {
                 alert('Por favor, preencha todos os campos.');
                 return;
@@ -183,21 +195,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Show success message (in a real app, you'd send this to a server)
+            // Exibe mensagem de sucesso (em um app real, enviaria para o servidor)
             alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
             
-            // Reset form
+            // Reseta o formulário
             this.reset();
         });
     }
     
-    // Email validation function
+    // Função de validação de email
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
     
-    // Animated counter for statistics
+    // Contador animado para estatísticas
     function animateCounter(element, target, duration = 2000) {
         let start = 0;
         const increment = target / (duration / 16);
@@ -215,13 +227,13 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCounter();
     }
     
-    // Intersection Observer for animations
+    // Intersection Observer para animações
     const observerOptions = {
         threshold: 0.3,
         rootMargin: '0px 0px -50px 0px'
     };
     
-    // Animate statistics when in view
+    // Anima estatísticas quando visíveis
     const statNumbers = document.querySelectorAll('.stat-number');
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -237,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(stat);
     });
     
-    // Animate skill bars when in view
+    // Anima barras de habilidades quando visíveis
     const skillBars = document.querySelectorAll('.skill-progress');
     const skillsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -255,33 +267,44 @@ document.addEventListener('DOMContentLoaded', function() {
         skillsObserver.observe(bar);
     });
     
-    // Add scroll-based navbar background
+    // Adiciona fundo à navbar ao rolar a página
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
     
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Add/remove scrolled class based on scroll position
+        // Adiciona/remove classe scrolled conforme a rolagem
         if (scrollTop > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
         
-        // Hide/show navbar on scroll
+        // Esconde/mostra navbar ao rolar
         if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
+            // Rolando para baixo
             navbar.style.transform = 'translateY(-100%)';
         } else {
-            // Scrolling up
+            // Rolando para cima
             navbar.style.transform = 'translateY(0)';
         }
         
         lastScrollTop = scrollTop;
     });
     
-    // Parallax effect for hero section
+    // Indicador de progresso de rolagem
+    const scrollProgressBar = document.querySelector('.scroll-progress-bar');
+    if (scrollProgressBar) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgressBar.style.width = scrollPercent + '%';
+        });
+    }
+    
+    // Efeito parallax na seção hero
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
         const parallaxElements = document.querySelectorAll('.geometric-shape');
@@ -292,13 +315,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add entrance animations for sections
-    const animatedSections = document.querySelectorAll('.about, .portfolio, .skills, .contact');
+    // Animação de entrada para seções
+    const animatedSections = document.querySelectorAll('.about, .experience, .projects, .skills, .contact, .beyond-resume');
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate-in');
+                
+                // Anima cards dentro da seção
+                const cards = entry.target.querySelectorAll('.experience-item, .project-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('animate-in');
+                    }, index * 100);
+                });
             }
         });
     }, {
@@ -307,17 +337,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     animatedSections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         sectionObserver.observe(section);
     });
     
-    // Add hover effects for portfolio items
+    // Adiciona efeito hover aos itens do portfólio
     const portfolioItemsAll = document.querySelectorAll('.portfolio-item');
     portfolioItemsAll.forEach(item => {
         item.addEventListener('mouseenter', function() {
-            // Add subtle rotation and scale
+            // Adiciona rotação e escala sutis
             this.style.transform = 'translateY(-10px) rotate(1deg) scale(1.02)';
         });
         
@@ -326,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add typing effect to hero title
+    // Efeito de digitação no título da seção hero
     function typeWriter(element, text, speed = 100) {
         let i = 0;
         element.innerHTML = '';
@@ -342,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     }
     
-    // Add smooth reveal animation for form inputs
+    // Animação suave de revelação para inputs do formulário
     const formGroups = document.querySelectorAll('.form-group');
     formGroups.forEach((group, index) => {
         group.style.opacity = '0';
@@ -355,29 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, index * 100);
     });
     
-    // Add custom cursor effect
-    // const cursor = document.createElement('div');
-    // cursor.className = 'custom-cursor';
-    // cursor.style.cssText = `
-    //     position: fixed;
-    //     width: 20px;
-    //     height: 20px;
-    //     background: rgba(139, 69, 19, 0.3);
-    //     border-radius: 50%;
-    //     pointer-events: none;
-    //     z-index: 9999;
-    //     transition: transform 0.1s ease;
-    //     display: none;
-    // `;
-    // document.body.appendChild(cursor);
-    
-    // document.addEventListener('mousemove', (e) => {
-    //     cursor.style.left = e.clientX - 10 + 'px';
-    //     cursor.style.top = e.clientY - 10 + 'px';
-    //     cursor.style.display = 'block';
-    // });
-    
-    // Add hover effects for interactive elements
+    // Adiciona efeito hover para elementos interativos
     const interactiveElements = document.querySelectorAll('button, .nav-link, .social-link');
     interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
@@ -391,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Preloader (optional)
+    // Preloader (opcional)
     const preloader = document.createElement('div');
     preloader.style.cssText = `
         position: fixed;
@@ -417,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
         animation: spin 1s linear infinite;
     `;
     
-    // Add spin animation
+    // Adiciona animação de rotação
     const style = document.createElement('style');
     style.textContent = `
         @keyframes spin {
@@ -434,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
     preloader.appendChild(spinner);
     document.body.appendChild(preloader);
     
-    // Hide preloader after page load
+    // Esconde o preloader após o carregamento da página
     window.addEventListener('load', () => {
         setTimeout(() => {
             preloader.style.opacity = '0';
@@ -445,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Toggle expand/collapse functionality
+// Funcionalidade de expandir/recolher
 function toggleContent(section) {
     const content = document.getElementById(section + '-content');
     const button = content.previousElementSibling;
@@ -471,15 +476,35 @@ function toggleContent(section) {
     }
 }
 
-// Service worker registration for better performance
+// Função para download do CV
+function downloadCV() {
+    const fileName = currentLanguage === 'pt' 
+        ? 'Rodrigo Braz de Oliveira-cv.pdf' 
+        : 'Rodrigo Braz de Oliveira-cv-en.pdf';
+    
+    const filePath = `CV-PDF/${fileName}`;
+    
+    // Criar um link temporário para download
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = fileName;
+    link.target = '_blank';
+    
+    // Adicionar ao DOM, clicar e remover
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// Registro do service worker para melhor desempenho
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
             .then(registration => {
-                console.log('SW registered: ', registration);
+                console.log('SW registrado: ', registration);
             })
             .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
+                console.log('Falha ao registrar SW: ', registrationError);
             });
     });
 }
