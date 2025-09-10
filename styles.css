@@ -529,6 +529,7 @@ h1, h2, h3 {
     margin-bottom: var(--spacing-md);
     line-height: 1.8;
     font-weight: 600;
+    text-align: justify;
 }
 
 .about-details,
@@ -538,6 +539,7 @@ h1, h2, h3 {
     margin-bottom: var(--spacing-md);
     color: var(--text-light);
     line-height: 1.7;
+    text-align: justify;
 }
 
 .about-projects {
@@ -796,8 +798,9 @@ h1, h2, h3 {
     left: 20px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: var(--accent-gold);
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent-gold), var(--primary-brown), var(--accent-gold));
+    border-radius: 2px;
 }
 
 .experience-item {
@@ -817,31 +820,27 @@ h1, h2, h3 {
 .experience-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-gold), var(--primary-brown), var(--accent-gold));
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
+    left: -30px;
+    top: 25px;
+    width: 18px;
+    height: 18px;
+    background: var(--primary-brown);
+    border: 4px solid var(--accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--warm-white), 0 4px 12px rgba(139, 69, 19, 0.4);
+    z-index: 3;
+    transition: var(--transition-medium);
+}
+
+.experience-item:hover::before {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px var(--warm-white), 0 6px 12px rgba(139, 69, 19, 0.4);
 }
 
 .experience-item:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
     border-color: rgba(218, 165, 32, 0.3);
-}
-
-.experience-item::before {
-    content: '';
-    position: absolute;
-    left: -30px;
-    top: 20px;
-    width: 12px;
-    height: 12px;
-    background: var(--primary-brown);
-    border: 3px solid var(--accent-gold);
-    border-radius: 50%;
 }
 
 .experience-date {
@@ -994,6 +993,9 @@ h1, h2, h3 {
     background: var(--accent-gold);
     border-radius: var(--border-radius-small);
     transition: var(--transition-fast);
+    pointer-events: auto;
+    z-index: 10;
+    position: relative;
 }
 
 .project-link:hover {
@@ -1222,6 +1224,17 @@ h1, h2, h3 {
     align-items: center;
     gap: var(--spacing-sm);
     color: var(--text-dark);
+}
+
+.contact-method a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.contact-method a:hover {
+    color: var(--primary-brown);
+    text-decoration: underline;
 }
 
 .contact-icon {
@@ -1500,6 +1513,7 @@ h1, h2, h3 {
     
     .experience-timeline::before {
         left: 10px;
+        width: 2px;
     }
     
     .experience-item {
@@ -1508,6 +1522,10 @@ h1, h2, h3 {
     
     .experience-item::before {
         left: -20px;
+        top: 20px;
+        width: 16px;
+        height: 16px;
+        border-width: 3px;
     }
     
     .profile-image {
