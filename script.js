@@ -209,6 +209,51 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailRegex.test(email);
     }
     
+    // Funcionalidade de copiar e-mail
+    const emailCopyElement = document.getElementById('email-copy');
+    if (emailCopyElement) {
+        emailCopyElement.addEventListener('click', async function() {
+            const email = this.textContent;
+            
+            try {
+                // Tenta usar a API moderna de clipboard
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(email);
+                } else {
+                    // Fallback para navegadores mais antigos
+                    const textArea = document.createElement('textarea');
+                    textArea.value = email;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    textArea.style.top = '-999999px';
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                }
+                
+                // Feedback visual
+                this.classList.add('copied');
+                const originalText = this.textContent;
+                this.textContent = currentLanguage === 'pt' ? 'E-mail copiado!' : 'Email copied!';
+                
+                // Restaura o texto original após 2 segundos
+                setTimeout(() => {
+                    this.classList.remove('copied');
+                    this.textContent = originalText;
+                }, 2000);
+                
+            } catch (err) {
+                console.error('Erro ao copiar e-mail:', err);
+                // Fallback: mostra o e-mail em um prompt
+                alert(currentLanguage === 'pt' 
+                    ? `E-mail: ${email}\n\nCopie o e-mail acima.` 
+                    : `Email: ${email}\n\nCopy the email above.`);
+            }
+        });
+    }
+    
     // Contador animado para estatísticas
     function animateCounter(element, target, duration = 2000) {
         let start = 0;

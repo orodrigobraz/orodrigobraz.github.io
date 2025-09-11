@@ -606,7 +606,7 @@ h1, h2, h3 {
 .passion-item {
     background: white;
     padding: var(--spacing-xl);
-    border-radius: var(--border-radius-large);
+    border-radius: var(--border-radius);
     box-shadow: 0 8px 32px rgba(139, 69, 19, 0.1);
     transition: var(--transition-medium);
     text-align: center;
@@ -622,7 +622,7 @@ h1, h2, h3 {
     color: white;
     border: none;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: var(--transition-fast);
     margin-top: var(--spacing-md);
@@ -668,7 +668,7 @@ h1, h2, h3 {
     max-width: 300px;
     height: auto;
     object-fit: contain;
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius);
     transition: var(--transition-medium);
     cursor: pointer;
     box-shadow: 0 4px 16px rgba(139, 69, 19, 0.2);
@@ -725,7 +725,7 @@ h1, h2, h3 {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius);
     transition: var(--transition-medium);
     cursor: pointer;
 }
@@ -789,18 +789,19 @@ h1, h2, h3 {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    padding-left: var(--spacing-lg);
+    padding-left: 30px;
 }
 
 .experience-timeline::before {
     content: '';
     position: absolute;
-    left: 20px;
+    left: 9px;
     top: 0;
     bottom: 0;
     width: 3px;
     background: linear-gradient(to bottom, var(--accent-gold), var(--primary-brown), var(--accent-gold));
     border-radius: 2px;
+    z-index: 1;
 }
 
 .experience-item {
@@ -810,17 +811,16 @@ h1, h2, h3 {
     padding: var(--spacing-lg);
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(139, 69, 19, 0.1);
-    margin-left: var(--spacing-lg);
+    margin-left: 30px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(218, 165, 32, 0.1);
     backdrop-filter: blur(10px);
-    overflow: hidden;
 }
 
 .experience-item::before {
     content: '';
     position: absolute;
-    left: -30px;
+    left: -21px;
     top: 25px;
     width: 18px;
     height: 18px;
@@ -1235,6 +1235,24 @@ h1, h2, h3 {
 .contact-method a:hover {
     color: var(--primary-brown);
     text-decoration: underline;
+}
+
+.email-copy {
+    cursor: pointer;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    user-select: none;
+}
+
+.email-copy:hover {
+    color: var(--primary-brown);
+    text-decoration: underline;
+}
+
+.email-copy.copied {
+    color: var(--accent-gold);
+    font-weight: 600;
 }
 
 .contact-icon {
