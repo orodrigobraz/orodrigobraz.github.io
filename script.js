@@ -312,6 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         skillsObserver.observe(bar);
     });
     
+    
     // Adiciona fundo à navbar ao rolar a página
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
@@ -431,13 +432,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const interactiveElements = document.querySelectorAll('button, .nav-link, .social-link');
     interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(2)';
-            cursor.style.background = 'rgba(218, 165, 32, 0.5)';
+            // Efeito hover será implementado via CSS
         });
         
         element.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursor.style.background = 'rgba(139, 69, 19, 0.3)';
+            // Efeito hover será implementado via CSS
         });
     });
     
