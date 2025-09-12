@@ -11,11 +11,29 @@ function switchLanguage() {
         if (newText) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = newText;
+            } else if (element.tagName === 'LABEL') {
+                // Para labels, não altera o innerHTML para evitar interferência com inputs
+                return;
             } else {
                 element.innerHTML = newText;
             }
         }
     });
+    
+    // Atualiza os placeholders do formulário de contato
+    const nameInput = document.getElementById('name');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+    
+    if (nameInput) {
+        nameInput.placeholder = currentLanguage === 'pt' ? 'Digite seu nome' : 'Enter your name';
+    }
+    if (subjectInput) {
+        subjectInput.placeholder = currentLanguage === 'pt' ? 'Digite o assunto da sua mensagem' : 'Enter the subject of your message';
+    }
+    if (messageInput) {
+        messageInput.placeholder = currentLanguage === 'pt' ? 'Digite sua mensagem' : 'Enter your message';
+    }
     
     // Atualiza o botão de download do CV especificamente
     const downloadCvBtn = document.getElementById('download-cv');
@@ -26,17 +44,31 @@ function switchLanguage() {
         }
     }
     
+    // Atualiza o texto do botão de envio do formulário
+    const submitBtn = document.querySelector('.contact-form .btn-primary');
+    if (submitBtn) {
+        const btnText = submitBtn.querySelector('.btn-text');
+        if (btnText) {
+            const newText = submitBtn.getAttribute(`data-${currentLanguage}`);
+            if (newText) {
+                btnText.textContent = newText;
+            }
+        }
+    }
+    
     // Atualiza o botão de idioma
     const langBtn = document.getElementById('lang-toggle');
     const langFlag = langBtn.querySelector('.lang-flag');
     const langText = langBtn.querySelector('.lang-text');
     
     if (currentLanguage === 'en') {
-        langFlag.textContent = '🇧🇷';
+        langFlag.src = 'img/brasil.png';
+        langFlag.alt = 'Brasil';
         langText.textContent = 'PT';
         document.documentElement.lang = 'en';
     } else {
-        langFlag.textContent = '🇺🇸';
+        langFlag.src = 'img/estados-unidos.png';
+        langFlag.alt = 'Estados Unidos';
         langText.textContent = 'EN';
         document.documentElement.lang = 'pt-BR';
     }
@@ -181,33 +213,38 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Obtém os valores do formulário
             const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
             // Validação simples
-            if (!name || !email || !message) {
+            if (!name || !subject || !message) {
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
             
-            if (!isValidEmail(email)) {
-                alert('Por favor, insira um email válido.');
-                return;
-            }
+            // Gera a mensagem para o WhatsApp
+            const whatsappMessage = `Oi, me chamo ${name}, vim falar sobre ${subject} e essa é a proposta: ${message}`;
             
-            // Exibe mensagem de sucesso (em um app real, enviaria para o servidor)
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            // Codifica a mensagem para URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Número do WhatsApp (substitua pelo seu número)
+            const phoneNumber = '5535984771404'; // Seu número sem caracteres especiais
+            
+            // Cria o link do WhatsApp
+            const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            // Abre o WhatsApp em uma nova aba
+            window.open(whatsappLink, '_blank');
+            
+            // Exibe mensagem de sucesso
+            alert('Redirecionando para o WhatsApp!');
             
             // Reseta o formulário
             this.reset();
         });
     }
     
-    // Função de validação de email
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
     
     // Funcionalidade de copiar e-mail
     const emailCopyElement = document.getElementById('email-copy');
