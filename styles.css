@@ -1360,17 +1360,17 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
-.btn-primary .whatsapp-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 0.5rem;
-}
-
 .btn-primary {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+
+.btn-primary .whatsapp-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 .form-group {
