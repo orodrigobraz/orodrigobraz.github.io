@@ -14,6 +14,9 @@ function switchLanguage() {
             } else if (element.tagName === 'LABEL') {
                 // Para labels, não altera o innerHTML para evitar interferência com inputs
                 return;
+            } else if (element.classList.contains('btn-primary')) {
+                // Para botões, não altera o innerHTML para preservar ícones
+                return;
             } else {
                 element.innerHTML = newText;
             }
