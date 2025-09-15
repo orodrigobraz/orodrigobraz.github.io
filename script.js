@@ -14,7 +14,7 @@ function switchLanguage() {
             } else if (element.tagName === 'LABEL') {
                 // Para labels, não altera o innerHTML para evitar interferência com inputs
                 return;
-            } else if (element.classList.contains('btn-primary')) {
+            } else if (element.classList.contains('btn-primary') || element.id === 'download-cv') {
                 // Para botões, não altera o innerHTML para preservar ícones
                 return;
             } else {
@@ -43,7 +43,11 @@ function switchLanguage() {
     if (downloadCvBtn) {
         const newText = downloadCvBtn.getAttribute(`data-${currentLanguage}`);
         if (newText) {
-            downloadCvBtn.innerHTML = newText;
+            // Preserva o ícone e atualiza apenas o texto
+            const btnText = downloadCvBtn.querySelector('.btn-text');
+            if (btnText) {
+                btnText.textContent = newText;
+            }
         }
     }
     

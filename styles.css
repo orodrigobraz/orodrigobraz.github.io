@@ -1373,6 +1373,35 @@ h1, h2, h3 {
     flex-shrink: 0;
 }
 
+/* Estilos para ícones nos botões */
+.btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.download-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    filter: brightness(0) saturate(100%) invert(100%);
+    transition: var(--transition-fast);
+}
+
+.btn-secondary .download-icon {
+    filter: brightness(0) saturate(100%) invert(20%);
+}
+
+.btn-secondary:hover .download-icon {
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
+/* Estilo específico para o botão de download */
+#download-cv {
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+}
+
 .form-group {
     position: relative;
     margin-bottom: var(--spacing-md);
