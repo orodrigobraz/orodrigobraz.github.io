@@ -51,6 +51,23 @@ function switchLanguage() {
         }
     }
     
+    // Atualiza o texto do trabalho (preservando o link da Aptiv)
+    const workText = document.querySelector('.work-text');
+    if (workText) {
+        const newText = workText.getAttribute(`data-${currentLanguage}`);
+        if (newText) {
+            // Preserva o link da Aptiv existente
+            const existingLink = workText.querySelector('.company-link');
+            if (existingLink) {
+                // Mantém o link existente e apenas atualiza o texto
+                workText.innerHTML = newText + '&nbsp;' + existingLink.outerHTML;
+            } else {
+                // Se não há link, cria um novo
+                workText.innerHTML = newText + '&nbsp;<a href="https://www.linkedin.com/company/aptiv/" target="_blank" class="company-link">Aptiv</a>';
+            }
+        }
+    }
+    
     // Atualiza o texto do botão de envio do formulário
     const submitBtn = document.querySelector('.contact-form .btn-primary');
     if (submitBtn) {
@@ -104,17 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            
-            // Animação do menu hambúrguer
-            const bars = navToggle.querySelectorAll('.bar');
-            bars.forEach((bar, index) => {
-                bar.style.transform = navMenu.classList.contains('active') 
-                    ? `rotate(${index === 0 ? '45deg' : index === 1 ? '0deg' : '-45deg'})`
-                    : 'rotate(0deg)';
-                if (index === 1) {
-                    bar.style.opacity = navMenu.classList.contains('active') ? '0' : '1';
-                }
-            });
+            navToggle.classList.toggle('active');
         });
     }
     
@@ -124,12 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', () => {
             if (navMenu) {
                 navMenu.classList.remove('active');
-                // Reseta a animação do hambúrguer
-                const bars = navToggle.querySelectorAll('.bar');
-                bars.forEach((bar, index) => {
-                    bar.style.transform = 'rotate(0deg)';
-                    if (index === 1) bar.style.opacity = '1';
-                });
+                navToggle.classList.remove('active');
             }
         });
     });
