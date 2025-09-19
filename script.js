@@ -14,8 +14,8 @@ function switchLanguage() {
             } else if (element.tagName === 'LABEL') {
                 // Para labels, não altera o innerHTML para evitar interferência com inputs
                 return;
-            } else if (element.classList.contains('btn-primary') || element.id === 'download-cv') {
-                // Para botões, não altera o innerHTML para preservar ícones
+            } else if (element.id === 'download-cv') {
+                // Para o botão de download do CV, não altera o innerHTML para preservar ícones
                 return;
             } else {
                 element.innerHTML = newText;
@@ -51,7 +51,7 @@ function switchLanguage() {
         }
     }
     
-    // Atualiza o texto do trabalho (preservando o link da Aptiv)
+    // Atualiza o texto do trabalho
     const workText = document.querySelector('.work-text');
     if (workText) {
         const newText = workText.getAttribute(`data-${currentLanguage}`);
@@ -237,8 +237,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Codifica a mensagem para URL
             const encodedMessage = encodeURIComponent(whatsappMessage);
             
-            // Número do WhatsApp (substitua pelo seu número)
-            const phoneNumber = '5535984771404'; // Seu número sem caracteres especiais
+            // Número do WhatsApp
+            const phoneNumber = '5535984771404';
             
             // Cria o link do WhatsApp
             const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = this.textContent;
             
             try {
-                // Tenta usar a API moderna de clipboard
+                // Tenta usar a API de clipboard
                 if (navigator.clipboard && window.isSecureContext) {
                     await navigator.clipboard.writeText(email);
                 } else {
@@ -445,6 +445,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Funcionalidade do carrossel de projetos
+    initCarousel();
+    
     // Efeito de digitação no título da seção hero
     function typeWriter(element, text, speed = 100) {
         let i = 0;
@@ -585,6 +588,119 @@ function downloadCV() {
     link.click();
     document.body.removeChild(link);
 }
+
+// Funcionalidade do carrossel de projetos
+function initCarousel() {
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const dotsContainer = document.getElementById('carousel-dots');
+    
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+    
+    const cards = track.querySelectorAll('.project-card');
+    const totalCards = cards.length;
+    let currentIndex = 0;
+    
+    // Criar dots
+    for (let i = 0; i < totalCards; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot';
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+    
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    
+    function updateCarousel() {
+        // Detectar se é mobile
+        const isMobile = window.innerWidth <= 768;
+        
+        // Calcular a largura de um card
+        let cardWidth;
+        if (isMobile) {
+            cardWidth = 100; // 100% no mobile
+        } else {
+            cardWidth = 500; // 500px no desktop (largura fixa)
+        }
+        
+        const translateX = -currentIndex * cardWidth;
+        if (isMobile) {
+            track.style.transform = `translateX(${translateX}%)`;
+        } else {
+            track.style.transform = `translateX(${translateX}px)`;
+        }
+        
+        // Atualizar dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Botões sempre habilitados (loop infinito)
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    function nextSlide() {
+        if (currentIndex < totalCards - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Volta para o primeiro
+        }
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = totalCards - 1; // Vai para o último
+        }
+        updateCarousel();
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Ajustar carrossel quando a janela for redimensionada
+    window.addEventListener('resize', () => {
+        // Ajustar índice se necessário ao redimensionar
+        const maxIndex = totalCards - 1;
+        
+        if (currentIndex > maxIndex) {
+            currentIndex = maxIndex;
+            updateCarousel();
+        }
+    });
+    
+    // Inicializar
+    updateCarousel();
+}
+
+// Função para atualizar automaticamente o ano no rodapé
+function updateCurrentYear() {
+    const currentYear = new Date().getFullYear();
+    const yearElements = document.querySelectorAll('.current-year');
+    
+    yearElements.forEach(element => {
+        element.textContent = currentYear;
+    });
+}
+
+// Atualizar o ano quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    updateCurrentYear();
+});
+
+// Atualizar o ano a cada minuto (para casos onde a página fica aberta por muito tempo)
+setInterval(updateCurrentYear, 60000);
 
 // Registro do service worker para melhor desempenho
 if ('serviceWorker' in navigator) {

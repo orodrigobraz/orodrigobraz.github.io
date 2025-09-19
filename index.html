@@ -65,7 +65,7 @@
                             Estudante de Sistemas de Informação apaixonado por tecnologia, com experiência em desenvolvimento full stack e análise de produtos. Atualmente trabalhando na Aptiv como Desenvolvedor de Software.
                         </p>
                         <div class="hero-buttons" role="group" aria-label="Ações principais">
-                            <button class="btn btn-primary" data-pt="Ver Portfolio" data-en="View Portfolio" aria-describedby="hero-description">Ver Portfolio</button>
+                            <button class="btn btn-primary" data-pt="Ver Portfólio" data-en="View Portfolio" aria-describedby="hero-description">Ver Portfólio</button>
                             <button class="btn btn-outline" data-pt="Contato" data-en="Contact" aria-describedby="hero-description">Contato</button>
                             <button class="btn btn-secondary" id="download-cv" data-pt="Baixar Currículo" data-en="Download Resume" aria-describedby="hero-description">
                                 <img src="img/download.png" alt="Download" class="download-icon" aria-hidden="true">
@@ -333,6 +333,45 @@
                         </div>
                     </div>
                 </div>
+                <div class="skills-category">
+                    <h3 data-pt="Pessoais" data-en="Soft Skills">Pessoais</h3>
+                    <div class="skill-item">
+                        <span class="skill-name" data-pt="Criatividade" data-en="Creativity">Criatividade</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name" data-pt="Pensamento Analítico" data-en="Analytical Thinking">Pensamento Analítico</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name" data-pt="Resiliência" data-en="Resilience">Resiliência</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="91"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name" data-pt="Adaptabilidade" data-en="Adaptability">Adaptabilidade</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="89"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name" data-pt="Comunicação" data-en="Communication">Comunicação</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name" data-pt="Gestão de Tempo" data-en="Time Management">Gestão de Tempo</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="86"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -344,51 +383,89 @@
                 <h2 id="projects-title" class="section-title" data-pt="Projetos" data-en="Projects">Projetos</h2>
                 <div class="section-line" aria-hidden="true"></div>
             </header>
-            <div class="projects-grid" role="list" aria-label="Portfolio de projetos">
-                <article class="project-card" role="listitem">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <a href="https://orodrigobraz.github.io/quiztop/" target="_blank" class="project-link" aria-label="Ver projeto QuizTop (abre em nova aba)">
-                                <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
-                                <span class="external-icon" aria-hidden="true">↗️</span>
-                            </a>
-                        </div>
+            <div class="projects-carousel" role="list" aria-label="Portfolio de projetos">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <article class="project-card" role="listitem">
+                            <div class="project-image">
+                                <img src="img/quiztop-screenshot.png" alt="Screenshot do projeto QuizTop" class="project-screenshot">
+                                <div class="project-overlay">
+                                    <a href="https://orodrigobraz.github.io/quiztop/" target="_blank" class="project-link" aria-label="Ver projeto QuizTop (abre em nova aba)">
+                                        <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                                        <span class="external-icon" aria-hidden="true">↗️</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 data-pt="QuizTop" data-en="QuizTop">QuizTop</h3>
+                                <p data-pt="Aplicativo web de quiz interativo com sistema de pontuação e ranking. Utiliza Firebase para autenticação e armazenamento de dados em tempo real." data-en="Interactive quiz web application with scoring system and ranking. Uses Firebase for authentication and real-time data storage.">Aplicativo web de quiz interativo com sistema de pontuação e ranking. Utiliza Firebase para autenticação e armazenamento de dados em tempo real.</p>
+                                <div class="project-tech" role="list" aria-label="Tecnologias utilizadas">
+                                    <span class="tech-tag" role="listitem">HTML5</span>
+                                    <span class="tech-tag" role="listitem">CSS3</span>
+                                    <span class="tech-tag" role="listitem">JavaScript</span>
+                                    <span class="tech-tag" role="listitem">Firebase</span>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="project-card" role="listitem">
+                            <div class="project-image">
+                                <img src="img/viajero-screenshot.png" alt="Screenshot do projeto Viaje.ro" class="project-screenshot">
+                                <div class="project-overlay">
+                                    <a href="https://orodrigobraz.github.io/viaje.ro/" target="_blank" class="project-link" aria-label="Ver projeto Viaje.ro (abre em nova aba)">
+                                        <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                                        <span class="external-icon" aria-hidden="true">↗️</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 data-pt="Viaje.ro" data-en="Viaje.ro">Viaje.ro</h3>
+                                <p data-pt="Plataforma de planejamento de viagens com mapas interativos e localização geográfica. Sistema completo de gestão de destinos e rotas." data-en="Travel planning platform with interactive maps and geographic location. Complete destination and route management system.">Plataforma de planejamento de viagens com mapas interativos e localização geográfica. Sistema completo de gestão de destinos e rotas.</p>
+                                <div class="project-tech" role="list" aria-label="Tecnologias utilizadas">
+                                    <span class="tech-tag" role="listitem">React</span>
+                                    <span class="tech-tag" role="listitem">TypeScript</span>
+                                    <span class="tech-tag" role="listitem">Tailwind CSS</span>
+                                    <span class="tech-tag" role="listitem">Supabase</span>
+                                    <span class="tech-tag" role="listitem">PostgreSQL</span>
+                                    <span class="tech-tag" role="listitem">PostGIS</span>
+                                    <span class="tech-tag" role="listitem">Leaflet</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card" role="listitem">
+                            <div class="project-image">
+                                <img src="img/pomofocus-clone.jpg" alt="Screenshot do projeto Pomofocus Clone" class="project-screenshot">
+                                <div class="project-overlay">
+                                    <a href="https://orodrigobraz.github.io/pomofocus-clone/" target="_blank" class="project-link" aria-label="Ver projeto Pomofocus Clone (abre em nova aba)">
+                                        <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                                        <span class="external-icon" aria-hidden="true">↗️</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 data-pt="Pomofocus Clone" data-en="Pomofocus Clone">Pomofocus Clone</h3>
+                                <p data-pt="Clone do Pomofocus, um aplicativo de técnica Pomodoro para gerenciamento de tempo e produtividade. Interface moderna e funcionalidades completas de cronômetro." data-en="Pomofocus clone, a Pomodoro technique app for time management and productivity. Modern interface with complete timer functionality.">Clone do Pomofocus, um aplicativo de técnica Pomodoro para gerenciamento de tempo e produtividade. Interface moderna e funcionalidades completas de cronômetro.</p>
+                                <div class="project-tech" role="list" aria-label="Tecnologias utilizadas">
+                                    <span class="tech-tag" role="listitem">ReactJS</span>
+                                    <span class="tech-tag" role="listitem">TypeScript</span>
+                                    <span class="tech-tag" role="listitem">CSS3</span>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="project-content">
-                        <h3 data-pt="QuizTop" data-en="QuizTop">QuizTop</h3>
-                        <p data-pt="Aplicativo web de quiz interativo com sistema de pontuação e ranking. Utiliza Firebase para autenticação e armazenamento de dados em tempo real." data-en="Interactive quiz web application with scoring system and ranking. Uses Firebase for authentication and real-time data storage.">Aplicativo web de quiz interativo com sistema de pontuação e ranking. Utiliza Firebase para autenticação e armazenamento de dados em tempo real.</p>
-                        <div class="project-tech" role="list" aria-label="Tecnologias utilizadas">
-                            <span class="tech-tag" role="listitem">HTML5</span>
-                            <span class="tech-tag" role="listitem">CSS3</span>
-                            <span class="tech-tag" role="listitem">JavaScript</span>
-                            <span class="tech-tag" role="listitem">Firebase</span>
-                        </div>
-                    </div>
-                </article>
+                </div>
                 
-                <article class="project-card" role="listitem">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <a href="https://orodrigobraz.github.io/viaje.ro/" target="_blank" class="project-link" aria-label="Ver projeto Viaje.ro (abre em nova aba)">
-                                <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
-                                <span class="external-icon" aria-hidden="true">↗️</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 data-pt="Viaje.ro" data-en="Viaje.ro">Viaje.ro</h3>
-                        <p data-pt="Plataforma de planejamento de viagens com mapas interativos e localização geográfica. Sistema completo de gestão de destinos e rotas." data-en="Travel planning platform with interactive maps and geographic location. Complete destination and route management system.">Plataforma de planejamento de viagens com mapas interativos e localização geográfica. Sistema completo de gestão de destinos e rotas.</p>
-                        <div class="project-tech" role="list" aria-label="Tecnologias utilizadas">
-                            <span class="tech-tag" role="listitem">React</span>
-                            <span class="tech-tag" role="listitem">TypeScript</span>
-                            <span class="tech-tag" role="listitem">Tailwind CSS</span>
-                            <span class="tech-tag" role="listitem">Supabase</span>
-                            <span class="tech-tag" role="listitem">PostgreSQL</span>
-                            <span class="tech-tag" role="listitem">PostGIS</span>
-                            <span class="tech-tag" role="listitem">Leaflet</span>
-                        </div>
-                    </div>
-                </article>
+                <!-- Controles do carrossel -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prev-btn" aria-label="Projeto anterior">
+                        <span>‹</span>
+                    </button>
+                    <div class="carousel-dots" id="carousel-dots"></div>
+                    <button class="carousel-btn next-btn" id="next-btn" aria-label="Próximo projeto">
+                        <span>›</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -520,7 +597,7 @@
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
-                <p data-pt="&copy; 2025 Rodrigo Braz. Todos os direitos reservados." data-en="&copy; 2025 Rodrigo Braz. All rights reserved.">&copy; 2025 Rodrigo Braz. Todos os direitos reservados.</p>
+                <p data-pt="&copy; <span class='current-year'>2025</span> Rodrigo Braz. Todos os direitos reservados." data-en="&copy; <span class='current-year'>2025</span> Rodrigo Braz. All rights reserved.">&copy; <span class="current-year">2025</span> Rodrigo Braz. Todos os direitos reservados.</p>
                 <nav class="social-links" aria-label="Links sociais">
                     <a href="https://www.linkedin.com/in/orodrigobraz/" target="_blank" class="social-link" aria-label="Visitar perfil no LinkedIn (abre em nova aba)">LinkedIn</a>
                     <a href="https://github.com/orodrigobraz" target="_blank" class="social-link" aria-label="Visitar perfil no GitHub (abre em nova aba)">GitHub</a>

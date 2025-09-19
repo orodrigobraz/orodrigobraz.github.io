@@ -942,7 +942,6 @@ h1, h2, h3 {
     /* Grids em 1 coluna */
     .about .about-content,
     .skills-content,
-    .projects-grid,
     .contact-content,
     .beyond-content {
         display: grid;
@@ -1184,46 +1183,7 @@ h1, h2, h3 {
     background: white;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-}
 
-.project-card {
-    background: linear-gradient(135deg, rgba(245, 245, 220, 0.8), rgba(255, 255, 255, 0.9));
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(218, 165, 32, 0.1);
-    backdrop-filter: blur(10px);
-    position: relative;
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(218, 165, 32, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-}
-
-.project-card:hover::before {
-    opacity: 1;
-}
-
-.project-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(139, 69, 19, 0.25);
-    border-color: rgba(218, 165, 32, 0.3);
-}
 
 .project-image {
     height: 200px;
@@ -1235,11 +1195,6 @@ h1, h2, h3 {
     justify-content: center;
 }
 
-.project-image::before {
-    content: '🚀';
-    font-size: 3rem;
-    opacity: 0.3;
-}
 
 /* Estilização específica do QuizTop */
 .project-card:nth-child(1) .project-image {
@@ -1336,6 +1291,210 @@ h1, h2, h3 {
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+}
+
+/* Carrossel de Projetos */
+.projects-carousel {
+    margin-top: var(--spacing-xl);
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Garantir que apenas um card seja visível por vez */
+.carousel-container .project-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Forçar o track a mostrar apenas um card por vez */
+.carousel-track {
+    width: 300% !important; /* 3 cards = 300% */
+}
+
+/* Desktop: garantir que apenas um card seja visível */
+@media (min-width: 769px) {
+    .carousel-container {
+        max-width: 500px !important;
+    }
+    
+    .carousel-container .project-card {
+        width: 500px !important;
+        flex: 0 0 500px !important;
+        max-width: 500px !important;
+        min-width: 500px !important;
+    }
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 0;
+    width: 100%;
+}
+
+.project-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-medium);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    width: 100%;
+    flex: 0 0 100%;
+    margin-right: 0;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.project-image {
+    height: 200px;
+}
+
+.project-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Mostrar a imagem completa do Pomofocus */
+.project-card:nth-child(3) .project-screenshot {
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(139, 69, 19, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition-medium);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid white;
+    border-radius: var(--border-radius-small);
+    transition: var(--transition-fast);
+}
+
+.project-link:hover {
+    background: white;
+    color: var(--primary-brown);
+}
+
+.external-icon {
+    font-size: 1.2rem;
+}
+
+.project-content {
+    padding: var(--spacing-lg);
+}
+
+.project-content h3 {
+    color: var(--primary-brown);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+.project-content p {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+/* Controles do Carrossel */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.carousel-btn {
+    background: var(--primary-brown);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.carousel-btn:hover {
+    background: var(--dark-brown);
+    transform: scale(1.1);
+}
+
+.carousel-btn:disabled {
+    background: var(--text-light);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.carousel-dot.active {
+    background: var(--primary-brown);
+    transform: scale(1.2);
 }
 
 /* Seção Portfólio - Manter estilos antigos para compatibilidade */
@@ -1900,8 +2059,36 @@ h1, h2, h3 {
         gap: var(--spacing-lg);
     }
     
-    .projects-grid {
-        grid-template-columns: 1fr;
+    
+    /* Carrossel mobile */
+    .project-card {
+        width: 100%;
+        max-width: none;
+        margin-right: 0;
+    }
+    
+    .carousel-track {
+        gap: 0;
+    }
+    
+    .carousel-container {
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    .carousel-controls {
+        gap: var(--spacing-sm);
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
     }
     
     .nav-menu {
