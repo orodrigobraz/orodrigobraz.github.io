@@ -14,8 +14,8 @@ function switchLanguage() {
             } else if (element.tagName === 'LABEL') {
                 // Para labels, não altera o innerHTML para evitar interferência com inputs
                 return;
-            } else if (element.id === 'download-cv') {
-                // Para o botão de download do CV, não altera o innerHTML para preservar ícones
+            } else if (element.id === 'download-cv' || element.classList.contains('btn-primary')) {
+                // Para botões com ícones, não altera o innerHTML para preservar ícones
                 return;
             } else {
                 element.innerHTML = newText;
@@ -79,6 +79,26 @@ function switchLanguage() {
             }
         }
     }
+    
+    // Atualiza todos os botões com ícones preservando os ícones
+    const buttonsWithIcons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    buttonsWithIcons.forEach(button => {
+        const btnText = button.querySelector('.btn-text');
+        if (btnText) {
+            const newText = button.getAttribute(`data-${currentLanguage}`);
+            if (newText) {
+                btnText.textContent = newText;
+            }
+        }
+    });
+    
+    // Preserva ícones de contato que podem estar sendo afetados pela tradução
+    const contactIcons = document.querySelectorAll('.contact-icon, .whatsapp-icon, .download-icon');
+    contactIcons.forEach(icon => {
+        // Garante que os ícones permaneçam visíveis
+        icon.style.display = 'inline-block';
+        icon.style.visibility = 'visible';
+    });
     
     // Atualiza o botão de idioma
     const langBtn = document.getElementById('lang-toggle');
@@ -620,7 +640,7 @@ function initCarousel() {
         // Calcular a largura de um card
         let cardWidth;
         if (isMobile) {
-            cardWidth = 100; // 100% no mobile
+            cardWidth = 100 / totalCards; // Porcentagem baseada no número de cards
         } else {
             cardWidth = 500; // 500px no desktop (largura fixa)
         }

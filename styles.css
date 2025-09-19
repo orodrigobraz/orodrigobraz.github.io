@@ -1316,9 +1316,33 @@ h1, h2, h3 {
     box-sizing: border-box !important;
 }
 
-/* Forçar o track a mostrar apenas um card por vez */
+/* Track base - será sobrescrito por media queries */
 .carousel-track {
-    width: 300% !important; /* 3 cards = 300% */
+    width: 300%; /* 3 cards = 300% */
+}
+
+/* Mobile: cards mais estreitos */
+@media (max-width: 768px) {
+    .carousel-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0;
+        padding: 0 5%;
+    }
+    
+    .carousel-track {
+        width: 300% !important; /* 3 cards = 300% */
+    }
+    
+    .carousel-container .project-card {
+        width: calc(100% / 3) !important;
+        flex: 0 0 calc(100% / 3) !important;
+        max-width: calc(100% / 3) !important;
+        min-width: calc(100% / 3) !important;
+        margin: 0 !important;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
 }
 
 /* Desktop: garantir que apenas um card seja visível */
@@ -1339,7 +1363,6 @@ h1, h2, h3 {
     display: flex;
     transition: transform 0.5s ease-in-out;
     gap: 0;
-    width: 100%;
 }
 
 .project-card {
