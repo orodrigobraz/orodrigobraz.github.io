@@ -1777,6 +1777,8 @@ h1, h2, h3 {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
+    display: inline-block !important;
+    visibility: visible !important;
 }
 
 /* Estilos para ícones nos botões */

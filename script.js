@@ -81,7 +81,7 @@ function switchLanguage() {
     }
     
     // Atualiza botões com ícones preservando os ícones
-    const buttonsWithIcons = document.querySelectorAll('.btn-secondary, .btn-primary[class*="whatsapp"], .btn-primary[class*="download"]');
+    const buttonsWithIcons = document.querySelectorAll('.btn-secondary, #download-cv');
     buttonsWithIcons.forEach(button => {
         const btnText = button.querySelector('.btn-text');
         if (btnText) {
@@ -92,8 +92,43 @@ function switchLanguage() {
         }
     });
     
+    // Atualiza botão do formulário de contato (com ícone do WhatsApp)
+    const contactFormButton = document.querySelector('.contact-form .btn-primary');
+    if (contactFormButton) {
+        const btnText = contactFormButton.querySelector('.btn-text');
+        if (btnText) {
+            const newText = contactFormButton.getAttribute(`data-${currentLanguage}`);
+            if (newText) {
+                btnText.textContent = newText;
+            }
+        }
+        
+        // Verifica se o ícone existe, se não, recria
+        let whatsappIcon = contactFormButton.querySelector('.whatsapp-icon');
+        if (!whatsappIcon) {
+            // Recria o ícone se foi removido
+            whatsappIcon = document.createElement('img');
+            whatsappIcon.src = 'img/WhatsApp_Logo_PNG_Sem_Fundo_Transparente.png';
+            whatsappIcon.alt = 'WhatsApp';
+            whatsappIcon.className = 'whatsapp-icon';
+            whatsappIcon.setAttribute('aria-hidden', 'true');
+            
+            // Insere o ícone antes do texto
+            const btnText = contactFormButton.querySelector('.btn-text');
+            if (btnText) {
+                contactFormButton.insertBefore(whatsappIcon, btnText);
+            } else {
+                contactFormButton.appendChild(whatsappIcon);
+            }
+        }
+        
+        // Garante que o ícone permaneça visível
+        whatsappIcon.style.display = 'inline-block';
+        whatsappIcon.style.visibility = 'visible';
+    }
+    
     // Atualiza botões simples (sem ícones) normalmente
-    const simpleButtons = document.querySelectorAll('.btn-primary:not([id="download-cv"]):not([class*="whatsapp"]):not([class*="download"])');
+    const simpleButtons = document.querySelectorAll('.btn-primary:not(#download-cv):not(.contact-form .btn-primary)');
     simpleButtons.forEach(button => {
         const newText = button.getAttribute(`data-${currentLanguage}`);
         if (newText) {
