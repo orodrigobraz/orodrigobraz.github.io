@@ -14,8 +14,8 @@ function switchLanguage() {
             } else if (element.tagName === 'LABEL') {
                 // Para labels, não altera o innerHTML para evitar interferência com inputs
                 return;
-            } else if (element.id === 'download-cv' || element.classList.contains('btn-primary')) {
-                // Para botões com ícones, não altera o innerHTML para preservar ícones
+            } else if (element.id === 'download-cv') {
+                // Para o botão de download do CV, não altera o innerHTML para preservar ícones
                 return;
             } else {
                 element.innerHTML = newText;
@@ -80,8 +80,8 @@ function switchLanguage() {
         }
     }
     
-    // Atualiza todos os botões com ícones preservando os ícones
-    const buttonsWithIcons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    // Atualiza botões com ícones preservando os ícones
+    const buttonsWithIcons = document.querySelectorAll('.btn-secondary, .btn-primary[class*="whatsapp"], .btn-primary[class*="download"]');
     buttonsWithIcons.forEach(button => {
         const btnText = button.querySelector('.btn-text');
         if (btnText) {
@@ -89,6 +89,15 @@ function switchLanguage() {
             if (newText) {
                 btnText.textContent = newText;
             }
+        }
+    });
+    
+    // Atualiza botões simples (sem ícones) normalmente
+    const simpleButtons = document.querySelectorAll('.btn-primary:not([id="download-cv"]):not([class*="whatsapp"]):not([class*="download"])');
+    simpleButtons.forEach(button => {
+        const newText = button.getAttribute(`data-${currentLanguage}`);
+        if (newText) {
+            button.innerHTML = newText;
         }
     });
     
