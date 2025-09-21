@@ -1177,6 +1177,92 @@ h1, h2, h3 {
     color: var(--text-dark);
 }
 
+/* Container do botão de expansão */
+.experience-toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
+}
+
+/* Botão de expansão das experiências */
+.experience-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--primary-brown);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+}
+
+.experience-toggle-btn:hover {
+    background: var(--dark-brown);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+.toggle-arrow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    opacity: 1;
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.toggle-arrow.fade-out {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.toggle-arrow.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.experience-toggle-btn.expanded .toggle-arrow {
+    opacity: 0.9;
+}
+
+/* Animação suave para as experiências antigas */
+.experience-old {
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    max-height: 0;
+    visibility: hidden;
+}
+
+.experience-old.show {
+    opacity: 1;
+    max-height: 2000px;
+    visibility: visible;
+}
+
+.experience-old .experience-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-old.show .experience-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay escalonado para as experiências antigas */
+.experience-old.show .experience-item:nth-child(1) { transition-delay: 0.1s; }
+.experience-old.show .experience-item:nth-child(2) { transition-delay: 0.2s; }
+.experience-old.show .experience-item:nth-child(3) { transition-delay: 0.3s; }
+.experience-old.show .experience-item:nth-child(4) { transition-delay: 0.4s; }
+
 /* Seção Projetos */
 .projects {
     padding: var(--spacing-xl) 0;
@@ -1779,6 +1865,8 @@ h1, h2, h3 {
     flex-shrink: 0;
     display: inline-block !important;
     visibility: visible !important;
+    order: -1; /* Garante que o ícone apareça antes do texto */
+    margin-right: 0.5rem;
 }
 
 /* Estilos para ícones nos botões */

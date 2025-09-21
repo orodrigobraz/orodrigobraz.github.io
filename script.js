@@ -80,6 +80,41 @@ function switchLanguage() {
         }
     }
     
+    // Atualiza o botão de expansão das experiências
+    const experienceToggleBtn = document.getElementById('experience-toggle');
+    if (experienceToggleBtn) {
+        const toggleText = experienceToggleBtn.querySelector('.toggle-text');
+        
+        if (toggleText) {
+            const newText = experienceToggleBtn.getAttribute(`data-${currentLanguage}`);
+            if (newText) {
+                toggleText.textContent = newText;
+            }
+        }
+        
+        // Preserva o ícone correto baseado no estado atual
+        let toggleArrow = document.getElementById('toggle-arrow-img');
+        
+        // Se o ícone não existir, recria ele
+        if (!toggleArrow) {
+            toggleArrow = document.createElement('img');
+            toggleArrow.id = 'toggle-arrow-img';
+            toggleArrow.className = 'toggle-arrow';
+            toggleArrow.style.display = 'inline-block';
+            toggleArrow.style.visibility = 'visible';
+            experienceToggleBtn.appendChild(toggleArrow);
+        }
+        
+        const isExpanded = experienceToggleBtn.classList.contains('expanded');
+        if (isExpanded) {
+            toggleArrow.src = 'img/seta-para-cima.png';
+            toggleArrow.alt = 'Seta para cima';
+        } else {
+            toggleArrow.src = 'img/seta-para-baixo.png';
+            toggleArrow.alt = 'Seta para baixo';
+        }
+    }
+    
     // Atualiza botões com ícones preservando os ícones
     const buttonsWithIcons = document.querySelectorAll('.btn-secondary, #download-cv');
     buttonsWithIcons.forEach(button => {
@@ -95,6 +130,10 @@ function switchLanguage() {
     // Atualiza botão do formulário de contato (com ícone do WhatsApp)
     const contactFormButton = document.querySelector('.contact-form .btn-primary');
     if (contactFormButton) {
+        // Primeiro, preserva o ícone existente
+        let whatsappIcon = contactFormButton.querySelector('.whatsapp-icon');
+        
+        // Atualiza apenas o texto, preservando a estrutura HTML
         const btnText = contactFormButton.querySelector('.btn-text');
         if (btnText) {
             const newText = contactFormButton.getAttribute(`data-${currentLanguage}`);
@@ -103,10 +142,8 @@ function switchLanguage() {
             }
         }
         
-        // Verifica se o ícone existe, se não, recria
-        let whatsappIcon = contactFormButton.querySelector('.whatsapp-icon');
+        // Se o ícone não existir, cria um novo e o posiciona antes do texto
         if (!whatsappIcon) {
-            // Recria o ícone se foi removido
             whatsappIcon = document.createElement('img');
             whatsappIcon.src = 'img/WhatsApp_Logo_PNG_Sem_Fundo_Transparente.png';
             whatsappIcon.alt = 'WhatsApp';
@@ -114,11 +151,15 @@ function switchLanguage() {
             whatsappIcon.setAttribute('aria-hidden', 'true');
             
             // Insere o ícone antes do texto
-            const btnText = contactFormButton.querySelector('.btn-text');
             if (btnText) {
                 contactFormButton.insertBefore(whatsappIcon, btnText);
             } else {
                 contactFormButton.appendChild(whatsappIcon);
+            }
+        } else {
+            // Se o ícone existe, garante que está na posição correta (antes do texto)
+            if (btnText && whatsappIcon.nextSibling !== btnText) {
+                contactFormButton.insertBefore(whatsappIcon, btnText);
             }
         }
         
@@ -128,7 +169,7 @@ function switchLanguage() {
     }
     
     // Atualiza botões simples (sem ícones) normalmente
-    const simpleButtons = document.querySelectorAll('.btn-primary:not(#download-cv):not(.contact-form .btn-primary)');
+    const simpleButtons = document.querySelectorAll('.btn-primary:not(#download-cv):not(.contact-form .btn-primary):not(#experience-toggle)');
     simpleButtons.forEach(button => {
         const newText = button.getAttribute(`data-${currentLanguage}`);
         if (newText) {
@@ -137,7 +178,7 @@ function switchLanguage() {
     });
     
     // Preserva ícones de contato que podem estar sendo afetados pela tradução
-    const contactIcons = document.querySelectorAll('.contact-icon, .whatsapp-icon, .download-icon');
+    const contactIcons = document.querySelectorAll('.contact-icon, .whatsapp-icon, .download-icon, .toggle-arrow');
     contactIcons.forEach(icon => {
         // Garante que os ícones permaneçam visíveis
         icon.style.display = 'inline-block';
@@ -512,6 +553,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funcionalidade do carrossel de projetos
     initCarousel();
     
+    // Funcionalidade de expansão das experiências
+    const experienceToggleBtn = document.getElementById('experience-toggle');
+    if (experienceToggleBtn) {
+        experienceToggleBtn.addEventListener('click', toggleExperience);
+    }
+    
     // Efeito de digitação no título da seção hero
     function typeWriter(element, text, speed = 100) {
         let i = 0;
@@ -629,6 +676,60 @@ function toggleContent(section) {
             text.textContent = currentLanguage === 'pt' ? 'Ocultar Instagram' : 'Hide Instagram';
         } else {
             text.textContent = currentLanguage === 'pt' ? 'Ocultar Fotos' : 'Hide Photos';
+        }
+    }
+}
+
+// Funcionalidade de expandir/recolher experiências
+function toggleExperience() {
+    const experienceOld = document.getElementById('experience-old');
+    const toggleBtn = document.getElementById('experience-toggle');
+    
+    if (!experienceOld || !toggleBtn) {
+        console.error('Elementos não encontrados');
+        return;
+    }
+    
+    const toggleText = toggleBtn.querySelector('.toggle-text');
+    const toggleArrow = document.getElementById('toggle-arrow-img');
+    
+    if (experienceOld.classList.contains('show')) {
+        // Recolher
+        experienceOld.classList.remove('show');
+        toggleBtn.classList.remove('expanded');
+        if (toggleText) toggleText.textContent = currentLanguage === 'pt' ? 'Ver mais' : 'View more';
+        
+        // Transição suave da seta
+        if (toggleArrow) {
+            toggleArrow.classList.add('fade-out');
+            setTimeout(() => {
+                toggleArrow.src = 'img/seta-para-baixo.png';
+                toggleArrow.alt = 'Seta para baixo';
+                toggleArrow.classList.remove('fade-out');
+                toggleArrow.classList.add('fade-in');
+                setTimeout(() => {
+                    toggleArrow.classList.remove('fade-in');
+                }, 300);
+            }, 150);
+        }
+    } else {
+        // Expandir
+        experienceOld.classList.add('show');
+        toggleBtn.classList.add('expanded');
+        if (toggleText) toggleText.textContent = currentLanguage === 'pt' ? 'Ver menos' : 'View less';
+        
+        // Transição suave da seta
+        if (toggleArrow) {
+            toggleArrow.classList.add('fade-out');
+            setTimeout(() => {
+                toggleArrow.src = 'img/seta-para-cima.png';
+                toggleArrow.alt = 'Seta para cima';
+                toggleArrow.classList.remove('fade-out');
+                toggleArrow.classList.add('fade-in');
+                setTimeout(() => {
+                    toggleArrow.classList.remove('fade-in');
+                }, 300);
+            }, 150);
         }
     }
 }
