@@ -1,4 +1,4 @@
-import { P as reactExports, H as jsxRuntimeExports } from "./server-Du8nqFPA.js";
+import { P as reactExports, H as jsxRuntimeExports } from "./server-CKrf-D6y.js";
 import "node:async_hooks";
 import "node:stream/web";
 import "node:stream";
@@ -230,7 +230,7 @@ function Navbar() {
     )) })
   ] });
 }
-const profile = "/orodrigobraz.github.io/assets/profile-It2jZ_wm.jpg";
+const profile = "/assets/profile-It2jZ_wm.jpg";
 function Hero() {
   const { lang } = useLang();
   const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -698,9 +698,9 @@ function Skills() {
     ) }) })
   ] }) });
 }
-const quiztop = "/orodrigobraz.github.io/assets/quiztop-B-5SFH2b.png";
-const viajero = "/orodrigobraz.github.io/assets/viajero-BkGaVmat.png";
-const pomofocus = "/orodrigobraz.github.io/assets/pomofocus-D45Onwwf.jpg";
+const quiztop = "/assets/quiztop-B-5SFH2b.png";
+const viajero = "/assets/viajero-BkGaVmat.png";
+const pomofocus = "/assets/pomofocus-D45Onwwf.jpg";
 const projects = [
   {
     n: "01",
