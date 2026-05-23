@@ -6,6 +6,7 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
 export default defineConfig({
+  base: "/orodrigobraz.github.io/",
   plugins: [
     tailwindcss(),
     cloudflare({ viteEnvironment: { name: "ssr" } }),
