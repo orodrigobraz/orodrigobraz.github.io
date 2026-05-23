@@ -14,7 +14,7 @@ export function Hero() {
         {/* Meta row */}
         <div className="grid grid-cols-12 gap-4 font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground mb-10">
           <span className="col-span-6 md:col-span-3">
-            {t({ pt: "Edição", en: "Issue" }, lang)} N.º 01
+            {t({ pt: "Edição", en: "Edition" }, lang)} N.º 01
           </span>
           <span className="col-span-6 md:col-span-3">
             {new Date().toLocaleDateString(lang === "pt" ? "pt-BR" : "en-US", {
@@ -44,8 +44,8 @@ export function Hero() {
             <p className="mt-6 max-w-md font-serif italic text-2xl md:text-3xl leading-snug text-foreground/80">
               {t(
                 {
-                  pt: "Estudante de Sistemas de Informação desenvolvendo interfaces modernas, responsivas e integradas a APIs — com JavaScript, TypeScript e React.",
-                  en: "Information Systems student building modern, responsive, API-integrated interfaces — with JavaScript, TypeScript and React.",
+                  pt: "Estudante de Sistemas de Informação desenvolvendo interfaces modernas, responsivas e integradas — com JavaScript, TypeScript e React.js.",
+                  en: "Information Systems student building modern, responsive, API-integrated interfaces — with JavaScript, TypeScript and React.js.",
                 },
                 lang,
               )}

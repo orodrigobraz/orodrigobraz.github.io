@@ -64,8 +64,8 @@ export function About() {
               </em>
               {t(
                 {
-                  pt: " na UNIFEI e construindo software para resolver problemas reais — do ERP corporativo ao app que documenta minhas viagens.",
-                  en: " at UNIFEI and building software to solve real problems — from corporate ERP to an app that documents my travels.",
+                  pt: " na Universidade Federal de Itajubá (UNIFEI) e construindo software para resolver problemas reais — do ERP corporativo ao app que documenta minhas viagens.",
+                  en: " at Federal University of Itajubá (UNIFEI) and building software to solve real problems — from corporate ERP to an app that documents my travels.",
                 },
                 lang,
               )}
